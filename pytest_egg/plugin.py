@@ -1,6 +1,7 @@
 from pytest_egg.arts import BROKEN_EGG_ASCII, WHOLE_EGG_ASCII
 
 EXITSTATUS_ATTR = "_pytest_egg_exitstatus"
+FAILED_TEST_SHORTLETTER = "🥚"
 
 
 def pytest_sessionfinish(session, exitstatus):
@@ -21,6 +22,17 @@ def pytest_unconfigure(config):
         tw.write(WHOLE_EGG_ASCII, green=True)
     else:
         tw.write(BROKEN_EGG_ASCII, red=True)
+
+
+def pytest_report_teststatus(report, config):
+    """Use an egg emoji for failing test progress in egg mode."""
+    if not config.option.egg:
+        return None
+
+    if report.failed and report.when == "call":
+        return "failed", FAILED_TEST_SHORTLETTER, "FAILED"
+
+    return None
 
 
 def pytest_addoption(parser):

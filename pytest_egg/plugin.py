@@ -16,12 +16,12 @@ BROKEN_EGG_ASCII = r"""
  \_\/_/
 """
 
-_EXITSTATUS_ATTR = "_pytest_egg_exitstatus"
+EXITSTATUS_ATTR = "_pytest_egg_exitstatus"
 
 
 def pytest_sessionfinish(session, exitstatus):
     """Attach exit status to config so it can be used in pytest_unconfigure."""
-    setattr(session.config, _EXITSTATUS_ATTR, exitstatus)
+    setattr(session.config, EXITSTATUS_ATTR, exitstatus)
 
 
 def pytest_unconfigure(config):
@@ -29,11 +29,11 @@ def pytest_unconfigure(config):
     if not config.option.egg:
         return
 
-    if not hasattr(config, _EXITSTATUS_ATTR):
+    if not hasattr(config, EXITSTATUS_ATTR):
         return
 
     tw = config.get_terminal_writer()
-    if getattr(config, _EXITSTATUS_ATTR) == 0:
+    if getattr(config, EXITSTATUS_ATTR) == 0:
         tw.write(WHOLE_EGG_ASCII, green=True)
     else:
         tw.write(BROKEN_EGG_ASCII, red=True)

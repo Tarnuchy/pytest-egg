@@ -4,7 +4,12 @@ import pytest_egg.plugin
 
 
 def test_whole_egg_shown_on_successful_test_run(pytester: pytest.Pytester):
-    pytester.makepyfile("def test_passes():\n\tassert True")
+    pytester.makepyfile(
+        test_passes="""
+def test_passes():
+    assert True
+"""
+    )
 
     result = pytester.runpytest("--egg")
     result.assert_outcomes(passed=1)
@@ -15,7 +20,12 @@ def test_whole_egg_shown_on_successful_test_run(pytester: pytest.Pytester):
 
 
 def test_broken_egg_shown_on_unsuccessful_test_run(pytester: pytest.Pytester):
-    pytester.makepyfile("def test_fails():\n\tassert 1 + 1 == 3")
+    pytester.makepyfile(
+        test_fails="""
+def test_fails():
+    assert 1 + 1 == 3
+"""
+    )
 
     result = pytester.runpytest("--egg")
     result.assert_outcomes(failed=1)
@@ -26,7 +36,12 @@ def test_broken_egg_shown_on_unsuccessful_test_run(pytester: pytest.Pytester):
 
 
 def test_egg_art_not_shown_unless_enabled(pytester: pytest.Pytester):
-    pytester.makepyfile("def test_passes():\n\tassert 1 + 1 == 2")
+    pytester.makepyfile(
+        test_passes="""
+def test_passes():
+    assert 1 + 1 == 2
+"""
+    )
 
     result = pytester.runpytest()
     result.assert_outcomes(passed=1)
@@ -37,7 +52,12 @@ def test_egg_art_not_shown_unless_enabled(pytester: pytest.Pytester):
 
 
 def test_egg_art_not_shown_on_call_to_help(pytester: pytest.Pytester):
-    pytester.makepyfile("def test_passes():\n\tassert 1 + 1 == 2")
+    pytester.makepyfile(
+        test_passes="""
+def test_passes():
+    assert 1 + 1 == 2
+"""
+    )
 
     result = pytester.runpytest("--egg", "--help")
 

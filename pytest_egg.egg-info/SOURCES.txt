@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+pytest_egg/__init__.py
+pytest_egg/plugin.py
+pytest_egg.egg-info/PKG-INFO
+pytest_egg.egg-info/SOURCES.txt
+pytest_egg.egg-info/dependency_links.txt
+pytest_egg.egg-info/entry_points.txt
+pytest_egg.egg-info/requires.txt
+pytest_egg.egg-info/top_level.txt
+tests/test_plugin.py

@@ -1,0 +1,25 @@
+Metadata-Version: 2.4
+Name: pytest-egg
+Version: 0.1.0
+Summary: A pytest plugin that prints egg ascii art at the end of a test run.
+License: MIT
+Classifier: Framework :: Pytest
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pytest>=7.0
+Dynamic: license-file
+
+# pytest-egg
+
+`pytest-egg` is a pytest plugin that can print egg ASCII art at the end of a run:
+
+- whole egg when tests pass
+- broken egg when there is at least one error/failure
+
+## Usage
+
+```bash
+pytest --egg
+```

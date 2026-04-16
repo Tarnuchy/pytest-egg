@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pytest-egg"
+version = "0.1.0"
+description = "A pytest plugin that prints egg ascii art at the end of a test run."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+classifiers = [
+  "Framework :: Pytest",
+  "Programming Language :: Python :: 3",
+]
+dependencies = ["pytest>=7.0"]
+
+[project.entry-points.pytest11]
+egg = "pytest_egg.plugin"

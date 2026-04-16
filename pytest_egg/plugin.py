@@ -1,20 +1,4 @@
-WHOLE_EGG_ASCII = r"""
-   ___
-  /   \
- /     \
-|       |
- \     /
-  \___/
-"""
-
-BROKEN_EGG_ASCII = r"""
-   ___
-  /   \
- /_/\_\
- \ \/ /
- / /\ \
- \_\/_/
-"""
+from pytest_egg.arts import BROKEN_EGG_ASCII, WHOLE_EGG_ASCII
 
 EXITSTATUS_ATTR = "_pytest_egg_exitstatus"
 

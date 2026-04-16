@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pytest-egg"
-version = "0.1.0"
+version = "0.2.0"
 description = "A pytest plugin that prints egg ascii art at the end of a test run."
 readme = "README.md"
 requires-python = ">=3.8"
